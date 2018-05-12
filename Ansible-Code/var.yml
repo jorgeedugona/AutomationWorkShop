@@ -1,0 +1,20 @@
+"Users": 
+      - { Name: Automation1, Password: Automation1! }
+      - { Name: Automation2, Password: Automation2! }
+      - { Name: Automation3, Password: Automation3! }
+      - { Name: Automation4, Password: Automation4! }
+      - { Name: Automation5, Password: Automation5! }
+      - { Name: Automation6, Password: Automation6! }
+      - { Name: Automation7, Password: Automation7! }
+      - { Name: Automation8, Password: Automation8! }
+      - { Name: Automation9, Password: Automation9! }
+      - { Name: Automation10, Password: Automation10! }
+      - { Name: Automation11, Password: Automation11! }
+      - { Name: Automation12, Password: Automation12! }
+      - { Name: Automation13, Password: Automation13! }
+      - { Name: Automation14, Password: Automation14! }
+
+"Groups":
+     - Automation
+     - wheel
+     - group1

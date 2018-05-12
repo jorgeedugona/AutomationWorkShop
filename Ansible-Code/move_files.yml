@@ -1,0 +1,34 @@
+- name: Creates Playbook Directory - {{ item.Name }}
+  file: 
+    path: /home/{{ item.Name }}/playbooks
+    state: directory
+    mode: 0775
+  with_items: "{{ variable.get('Users') }}"
+  
+- name: Copy Modules
+  copy:
+     src: /root/modules
+     dest: /root/
+
+- name: Copy Hosts File 
+  copy:
+    src: /etc/ansible/hosts
+    dest: /etc/ansible/hosts
+
+- name: Copy Playbooks
+  copy:
+    src: /etc/ansible/WorkshopPlaybooks/NFS_Mount
+    dest: /home/{{ item.Name }}/playbooks
+  with_items: "{{ variable.get('Users') }}"
+
+- name: Copy Vars
+  copy: 
+    src: /etc/ansible/WorkshopPlaybooks/variable.yml
+    dest: /home/{{ item.Name }}/playbooks
+  with_items: "{{ variable.get('Users') }}"
+  
+- name: Adding line to ansible.cfg file
+  lineinfile:
+    path: /etc/ansible/ansible.cfg
+    regexp: '^#library        = /usr/share/my_modules/'
+    line: 'library        = /root/modules/'

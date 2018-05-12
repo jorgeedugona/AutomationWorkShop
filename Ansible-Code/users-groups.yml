@@ -1,0 +1,23 @@
+ - name: Get User Variables From var.yml
+   include_vars:
+      file: var.yml
+      name: variable
+    
+ - name: Add Groups
+   group: 
+       name: "{{ item }}"
+   with_items: "{{ variable.get('Groups') }}"
+
+ - name: Add Users + Assign to Group
+   user:
+      name: "{{ item.Name }}"
+      password: "{{ item.Password | password_hash('sha512') }}"
+      groups: Automation, wheel 
+   with_items: "{{ variable.get('Users') }}"
+       
+ - name: Allow wheel group to have passwordless sudo
+   lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
