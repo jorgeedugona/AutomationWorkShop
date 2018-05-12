@@ -17,13 +17,13 @@
 
 - name: Copy Playbooks
   copy:
-    src: ./AutomationWorkShop/Ansible-Code/WorkshopPlaybooks/NFS_Mount.yml
+    src: ./WorkshopPlaybooks/NFS_Mount.yml
     dest: /home/{{ item.Name }}/playbooks
   with_items: "{{ variable.get('Users') }}"
 
 - name: Copy Vars
   copy: 
-    src: ./AutomationWorkShop/Ansible-Code/WorkshopPlaybooks/variable.yml
+    src: ./WorkshopPlaybooks/variable.yml
     dest: /home/{{ item.Name }}/playbooks
   with_items: "{{ variable.get('Users') }}"
   
