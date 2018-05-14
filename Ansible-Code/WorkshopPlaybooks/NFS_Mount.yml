@@ -94,7 +94,7 @@
                 user={{ variable.get('SLM_user') }} 
                 password={{ variable.get('SLM_password') }}
                 action=get
-                name=ansibleExportPolicy
+                name="{{ variable.get('SVM_name') }}_AnsibleExport"
       register : jsonResultforExportPolicy
 
     - name: print the export policy key
